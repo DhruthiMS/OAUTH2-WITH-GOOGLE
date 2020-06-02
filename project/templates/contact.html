@@ -1,0 +1,50 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+Contact
+{% endblock title %}
+
+{% block body %}
+
+{% load static %}
+<div class="bg-image"></div>
+ <div class="container mt-5">
+    <div class="bg-text">
+
+
+
+      <p class="text-center" style="font-family: 'Bebas Neue', cursive;"><h1>CONTACT</h1></p>
+
+
+    <form action="/contact" method="post">{% csrf_token %}
+
+    <div class="form-group">
+    <label for="name" style="font-family: 'times';"> Name </label>
+    <input type="text" class="form-control" style="font-family: 'Lucida Handwriting';" id="name" name="name" placeholder="enter your name">
+    </div>
+
+    <div class="form-group">
+    <label for="USN"> USN </label>
+    <input type="text" class="form-control" style="font-family: 'Lucida Handwriting';"  id="usn" name="usn" placeholder="enter your USN number">
+    </div>
+
+
+    <div class="form-group">
+    <label for="phone"> Phone No </label>
+    <input type="number" class="form-control" style="font-family: 'Lucida Handwriting';" id="phone" name="phone" placeholder="enter your phone number">
+    </div>
+
+
+    <div class="form-group">
+    <label for="desc"> How May i Help You? </label>
+    <textarea class="form-control"  style="font-family: 'Lucida Handwriting';" id="desc" name="desc" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-danger">Send Message </button>
+
+    </form>
+
+  </div>
+ </div>
+
+{% endblock body %}

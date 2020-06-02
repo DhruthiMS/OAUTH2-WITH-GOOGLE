@@ -1,0 +1,42 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+{% block body %}
+
+
+<div class="container mt-3"> 
+  <button type="button" class="btn btn-primary  btn-lg btn-block">
+    <p class="font-normal"> 
+     <h1 class="font-family:"Book Antiqua" ;"> My Blog</h1></p>
+        {% if user.is_authenticated %}
+       <p class="font-family: "Lucida Handwriting";">Logged as {{ user.username }}</p> 
+       </a>
+      </button>
+     {% endif %}
+  
+</div>
+{% for post in allPosts %}
+
+<div class="container mt-3">
+<div class="card">
+  <div class="card-header">
+    {{post.title}}
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p> {{post.content}}</p>
+      <footer class="blockquote-footer">Article by : {{post.author}}<cite title="Source Title"> <b> {{post.timeStamp}} </b></cite></footer>
+    </blockquote>
+    <br>
+    <div class="fb-like" data-href="http://127.0.0.1:8000/blog" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true">
+    
+   
+  </div>
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock body %}

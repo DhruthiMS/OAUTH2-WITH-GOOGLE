@@ -1,0 +1,344 @@
+{% load static %}
+
+{% load socialaccount  %}
+{% providers_media_js %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="google-signin-scope" content="profile email">
+    
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,600,700,800,900" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans&display=swap" rel="stylesheet">
+   
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0"></script>
+  
+
+     
+    <style>
+       #demoimage {
+          float: left ;
+      }
+      #demotext {
+         float: left ;
+      }
+
+      .fa {
+        padding: 20px;
+        font-size: 15px;
+        width: 50px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+      }
+
+      .fa-facebook {
+        background: rgb(59, 94, 169);
+        color: white;
+      }
+
+      .fa-instagram {
+        background: #FF3393;
+        color: white;
+      }
+
+      }
+      .google {
+        background-color: #3999dd;
+        color: white;
+      }
+
+      .container {
+       text-align: center;
+       border-radius: 5px;
+      }
+
+      body, html {
+        height: 100%;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+       .bg-image {
+           /* The image used */
+           background-image: url("{% static 'images/bg1.jpg' %}");
+
+          /* Add the blur effect */
+             filter: blur(5px);
+           -webkit-filter: blur(5px);
+
+              /* Full height */
+             height: 100%;
+
+            /* Center and scale the image nicely */
+             background-position: center;
+             background-repeat: no-repeat;
+             background-size: cover;
+      }
+
+                    /* Position text in the middle of the page/image */
+      .bg-text {
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+            color: white;
+            font-weight: bold;
+            border: 1px solid #f1f1f1;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+       }
+      
+    </style>
+      
+
+    <title>{% block title %}
+
+    {% endblock title %}</title>
+
+     
+
+  </head>
+  {% load static %}
+  <body>
+
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                   <a class="navbar-brand" href="#">
+                      <img src="{% static 'images/logo.jpg' %}" alt="Logo" style="width:100px; height:40px ;">
+                   </a>
+
+                               <a class="navbar-brand" href="/"><strong>AIROBOTICA</strong></a>
+                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                           </button>
+ 
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                  <ul class="navbar-nav m-auto">
+
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/"><strong>HOME</strong></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/blog"><strong>BLOG</strong></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/about"><strong>ABOUT</strong></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact"><strong>CONTACT</strong></a>
+      </li>  
+    </ul>
+    
+    <div class="ml-auto form-inline">
+            <form method="get" action="/search" class="my-2 my-lg-0 mx-2">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search" >
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    {% if user.is_authenticated %}
+
+    <ul class="navbar-nav mr-1">
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Welcome {{request.user}}
+
+    </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    
+  <a class="dropdown-item" href="/logout">Logout</a>
+    </li>
+    </ul>
+
+    {% else %}
+
+    <button type="button" class="btn btn-outline-danger" data-target="#loginModel" data-toggle="modal" > Login</button>
+    <button type="button" class="btn btn-outline-success" data-target="#signupModel" data-toggle="modal" > Signup </button>
+
+  {% endif %}
+    
+  </div>
+  </div>
+  </div>
+</nav>
+
+
+{% for message in messages %}
+
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong></strong>{{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+{% load static %}
+
+{% block body %}
+
+
+{% endblock body %}
+
+
+
+</div>
+
+
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModel" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Signup</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      
+      <div class="modal-body">
+
+      <form action="/signup" method="post">{% csrf_token %}
+
+
+      <div class="form-group">
+      <label for="username">UserName </label>
+      <input type="text" class="form-control" name="username" id="username" placeholder="choose unique name">
+      </div>
+
+     <div class="form-group">
+      <label for="fname">First Name </label>
+      <input type="text" class="form-control" name="fname" id="fname" placeholder="Enter Your First Name">
+      </div>
+
+
+      <div class="form-group">
+      <label for="lname">Last Name </label>
+      <input type="text" class="form-control" name="lname" id="lname" placeholder="enter you last name">
+      </div>
+
+
+      
+      <div class="form-group">
+      <label for="email">Email </label>
+      <input type="email" class="form-control" name="email" id="email" placeholder="enter your email">
+      </div>
+
+
+      
+      <div class="form-group">
+      <label for="pass1">Password </label>
+      <input type="text" class="form-control" name="pass1" id="pass1" placeholder="enter you last name">
+      </div>
+
+
+      <div class="form-group">
+      <label for="pass2">Confirm Password </label>
+      <input type="password" class="form-control" name="pass2" id="pass2" placeholder="enter you last name">
+      </div>
+
+
+
+
+
+
+        <button type="submit" class="btn btn-success">SignUp </button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% comment %} login model  {% endcomment %}
+
+<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="loginModelLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="btn btn-secondary btn-lg btn-block" class="modal-title" id="loginModelLabel">Login</button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        
+      </div>
+      
+
+<div class="container mt-4">
+  <div class="inline-group">
+     <br>
+     <a class="btn btn-danger btn-lg btn-block" href="{% provider_login_url 'google'  %}" class="btn btn-social-icon btn-google-plus">
+       <i class="fa fa-google fa-fw"></i>
+        Login with Google+
+      </a>
+  </div>
+</div>
+
+   
+
+      <br>
+      <br>
+      <div class="modal-body">
+      
+       <form action="/login" method="post">{% csrf_token %}
+             <div class="form-group">
+                    <label for="loginusername">UserName</label>
+                          <input type="text" class="form-control" name="loginusername" id="loginusername" placeholder="Enter UserName" required>
+              </div>
+ 
+                          <div class="form-group">
+                              <label for="loginpassword">Password</label>
+                              <input type="password" class="form-control" name="loginpassword" id="loginpassword"  placeholder="Enter Your Password" required>
+                          </div>
+  
+                 <button type="submit" class="btn btn-success">Login</button>
+        </form>
+        
+                 <div class="modal-footer">
+        
+       
+         </div>
+       </div>
+     </div>
+     </div>
+    </div>
+
+
+
+
+     <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6"></script>
+     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
