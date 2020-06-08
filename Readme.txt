@@ -11,4 +11,4 @@ i.e Firstly Signup  and  then login   or
 -->in the setting you need to mention the client_id and secret Key
    
 
-Batch-1  Code -->https://github.com/DhruthiMS/OAUTH-AUTHENTICATION-WITH-GOOGLE.git
+Batch-1  Code -->https://github.com/DhruthiMS/OAUTH2-WITH-GOOGLE.git
